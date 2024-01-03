@@ -28,10 +28,10 @@ play.addEventListener('click', () => {
     total = document.querySelector(player + ' .total');
     let diceResult = Math.floor(Math.random() * (7 - 1) + 1);
     dice.innerText = diceResult;
-    /*if (diceResult == 1) {
+    if (diceResult == 1) {
         alert('"Vous avez fais 1 : VOUS PASSEZ VOTRE TOUR ET PERDEZ VOS POINTS !');
         resetScore();
-    } else */{
+    } else {
         tempScore += parseInt(dice.innerText);    
         score.innerText = tempScore;
     }
