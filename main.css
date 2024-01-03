@@ -1,0 +1,12 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  border: solid 2px blue;
+}
+
+.players {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75%;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,51 @@
+html, body {
+    margin: auto;
+    font-family: 'lato';3
+}
+.title {
+    text-align: center;
+}
+
+.device {
+    border: 0.8em solid #dc5959;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 1em;
+}
+
+.newGame, .game {
+    margin : 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.players {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+}
+
+
+.one, .two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.total {
+    background-color: #ff6962;
+    padding: 1em 2em;
+    margin-top: 2em;
+}
+
+.score {
+    font-size: 2em;
+    color: #dc5959;
+}
+
+.name {
+    font-weight: bold;
+    font-size: large;
+}
