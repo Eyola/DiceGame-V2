@@ -1,4 +1,4 @@
-const test = 100000;
+const test = 1000000;
 
 let table = [0,0,0,0,0,0];
 
@@ -25,5 +25,5 @@ for (let i = 0; i < test; i++) {
 }
 
 table.forEach(element => {
-    console.log(element / 1000); 
+    console.log(element / 10000); 
 });
