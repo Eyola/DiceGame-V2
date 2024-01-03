@@ -60,17 +60,11 @@ function roll() {
 }
 
 function addTempScore() {
-    if (player == '.one') {
-        score = document.querySelector(player + ' .score');
-        tempScore[0] += diceResult;
-        score.innerText = tempScore[0];
-        return tempScore[0];  
-    } else {
-        score = document.querySelector(player + ' .score' );
-        tempScore[1] += diceResult;
-        score.innerText = tempScore[1];
-        return tempScore[1]; 
-    }
+    let playerNumber = (player == '.one') ? 0 : 1;
+    score = document.querySelector(player + ' .score');
+    tempScore[playerNumber] += diceResult;
+    score.innerText = tempScore[playerNumber];
+    return tempScore[playerNumber];  
 }
 
 function addTotalScore() {
