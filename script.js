@@ -1,60 +1,92 @@
 let player = '.one';
 
+let playerOne = "";
+let playerTwo = "";
 let score = document.querySelector(player + ' .score' );
 let total = document.querySelector(player + ' .total');
 let dice = document.querySelector('.game .dé');
-let tempScore = 0;
-let initGame = document.querySelectorAll(".disable");
+let tempScore = [0, 0];
+let totalScore = [0, 0];
+let initGameButton = document.querySelectorAll(".disable");
+let resetScoreAll = document.querySelectorAll(".score");
+let resetTotalAll = document.querySelectorAll('.total');
+let diceResult = 0;
 
 const newGame = document.querySelector('#new-game'); 
 newGame.addEventListener('click', () => {
     player = '.one';
-    let playerOne = prompt("Nom du premier joueur ?").toUpperCase();
-    let playerTwo = prompt("Nom du deuxieme joueur ?").toUpperCase();
+    playerOne = prompt("Nom du premier joueur ?").toUpperCase();
+    playerTwo = prompt("Nom du deuxieme joueur ?").toUpperCase();
     const nameOne = document.querySelector(".one .name");
     nameOne.innerText = playerOne;
     const nameTwo = document.querySelector(".two .name");
     nameTwo.innerText = playerTwo;
     resetAll();
-    initGame.forEach(element => {
+    initGameButton.forEach(element => {
         element.disabled = false;
-    });
+    })});
 
 const play = document.querySelector('#launch');
 play.addEventListener('click', () => {
-    score = document.querySelector(player + ' .score');
-    total = document.querySelector(player + ' .total');
-    let diceResult = Math.floor(Math.random() * (7 - 1) + 1);
-    dice.innerText = diceResult;
+    console.log(player + ' doit jouer.')
+    roll();
     if (diceResult == 1) {
         alert('"Vous avez fais 1 : VOUS PASSEZ VOTRE TOUR ET PERDEZ VOS POINTS !');
         resetScore();
+        changePlayer();
     } else {
-        tempScore += parseInt(dice.innerText);    
-        score.innerText = tempScore;
+        addTempScore();
     }
 });
 
 const saveGame = document.querySelector('#save');
 saveGame.addEventListener('click', () => {
-    total.innerText = parseInt(score.innerText) + parseInt(total.innerText);
-    score.innerText = 0;
-    if (total.innerText >= 10) {
-        if (player == '.one') {
+    addTotalScore();
+        if (totalScore[0] >= 20) {
             alert (playerOne + " a gagné !");
             resetGame();
-        } else {
+        } else if (totalScore[1] >= 20){
             alert (playerTwo + " a gagné !");
             resetGame();
-        }
-    } else {
-        changePlayer();
-
+        } else {
+        changePlayer();    
     }
-})});
+});
+
+function roll() {
+    diceResult = Math.floor(Math.random() * (7 - 1) + 1);
+    dice.innerText = diceResult;
+    return diceResult;
+}
+
+function addTempScore() {
+    if (player == '.one') {
+        score = document.querySelector(player + ' .score');
+        tempScore[0] += diceResult;
+        score.innerText = tempScore[0];
+        return tempScore[0];  
+    } else {
+        score = document.querySelector(player + ' .score' );
+        tempScore[1] += diceResult;
+        score.innerText = tempScore[1];
+        return tempScore[1]; 
+    }
+}
+
+function addTotalScore() {
+    if (player == '.one') {
+        total = document.querySelector(player + ' .total');
+        totalScore[0] += tempScore[0];
+        total.innerText = totalScore[0];
+    } else {
+        total = document.querySelector(player + ' .total');
+        totalScore[1] += tempScore[1];
+        total.innerText = totalScore[1];
+    }
+    resetScore();
+}
 
 function changePlayer() {
-    tempScore = 0;
     if (player == '.one') {
         player = '.two';
     } else {
@@ -63,21 +95,27 @@ function changePlayer() {
 };
 
 function resetGame() {
-    for (let i = 0; i < initGame.length; i++) {
-        initGame[i].disabled = true;
+    for (let i = 0; i < initGameButton.length; i++) {
+        initGameButton[i].disabled = true;
     }
-}
+    dice.innerText = 0;
+};
 
 function resetScore() {
-    score.innerText = 0;
-    console.log('score ' + player + ' : ' + score.innerText );
-}
+    tempScore = [0, 0];
+    resetScoreAll.forEach(element => {
+        element.innerText = 0;
+    });
+};
 
 function resetTotal() {
-    total.innerText = 0;
-}
+    totalScore = [0, 0];
+    resetTotalAll.forEach(element => {
+        element.innerText = 0;
+    })
+};
 
 function resetAll() {
     resetScore();
     resetTotal();
-}
+};
