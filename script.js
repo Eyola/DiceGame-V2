@@ -1,12 +1,12 @@
 let player = '.one';
 
 let score = document.querySelector(player + ' .score' );
-let dice = document.querySelector('.game .dé');
 let total = document.querySelector(player + ' .total');
+let dice = document.querySelector('.game .dé');
 let tempScore = 0;
-let initGame = document.getElementsByClassName("disable");
+let initGame = document.querySelectorAll(".disable");
 
-const newGame = document.getElementById('new-game'); 
+const newGame = document.querySelector('#new-game'); 
 newGame.addEventListener('click', () => {
     player = '.one';
     let playerOne = prompt("Nom du premier joueur ?").toUpperCase();
@@ -15,14 +15,12 @@ newGame.addEventListener('click', () => {
     nameOne.innerText = playerOne;
     const nameTwo = document.querySelector(".two .name");
     nameTwo.innerText = playerTwo;
-    resetTotal();
-    resetScore();
-    resetTotal();
-    for (let i = 0; i < initGame.length; i++) {
-        initGame[i].disabled = false;
-    }
+    resetAll();
+    initGame.forEach(element => {
+        element.disabled = false;
+    });
 
-const play = document.getElementById('launch');
+const play = document.querySelector('#launch');
 play.addEventListener('click', () => {
     score = document.querySelector(player + ' .score');
     total = document.querySelector(player + ' .total');
@@ -37,7 +35,7 @@ play.addEventListener('click', () => {
     }
 });
 
-const saveGame = document.getElementById('save');
+const saveGame = document.querySelector('#save');
 saveGame.addEventListener('click', () => {
     total.innerText = parseInt(score.innerText) + parseInt(total.innerText);
     score.innerText = 0;
@@ -73,17 +71,13 @@ function resetGame() {
 function resetScore() {
     score.innerText = 0;
     console.log('score ' + player + ' : ' + score.innerText );
-    changePlayer();
 }
 
 function resetTotal() {
     total.innerText = 0;
-    changePlayer();
 }
 
 function resetAll() {
     resetScore();
     resetTotal();
 }
-
-
