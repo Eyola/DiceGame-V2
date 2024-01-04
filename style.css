@@ -1,52 +1,181 @@
 html, body {
-    margin: auto;
-    font-family: "lato";
-  }
-  
-  .title {
-    text-align: center;
-  }
-  
-  .device {
-    border: 0.8em solid #dc5959;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2em 1em;
-  }
-  
-  .newGame, .game {
-    margin: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .players {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 75%;
-  }
-  
-  .one, .two {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .total {
-    background-color: #ff6962;
-    padding: 1em 2em;
-    margin-top: 2em;
-  }
-  
-  .score {
-    font-size: 2em;
-    color: #dc5959;
-  }
-  
-  .name {
-    font-weight: bold;
-    font-size: large;
-  }/*# sourceMappingURL=style.css.map */
+  font-family: lato;
+}
+
+.title {
+  text-align: center;
+}
+
+.device {
+  display: flex;
+  border: 0.8em solid #dc5959;
+  margin: 2em 1em;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: center;
+}
+
+.newGame, .game {
+  margin: 1em;
+  align-items: center;
+}
+
+.players {
+  display: flex;
+  width: 100%;
+}
+
+.one, .two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.total {
+  background-color: #ff6962;
+  padding: 1em 2em;
+  margin-top: 2em;
+}
+
+.score {
+  font-size: 2em;
+  color: #dc5959;
+}
+
+.name {
+  font-weight: bold;
+  font-size: large;
+}
+
+.active0 {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.150297619) 50%, rgba(255, 255, 255, 0) 50%);
+}
+
+.active1 {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.150297619) 50%, rgba(255, 255, 255, 0) 50%);
+}
+
+#dice {
+  display: grid;
+  grid-template-columns: repeat(3, 1rem);
+  grid-template-rows: repeat(3, 1rem);
+  grid-gap: 1rem;
+  justify-items: center;
+  box-shadow: 0px 0px 3px 1px #8e838a;
+  align-items: center;
+  justify-items: center;
+  padding: 0.5rem;
+  background: white;
+}
+
+.oneD {
+  width: 1rem;
+  display: none;
+  background: rgba(255, 0, 0, 0.685);
+  height: 1rem;
+  border-radius: 50%;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.twoD {
+  width: 1rem;
+  display: none;
+  background: rgba(255, 0, 0, 0.685);
+  height: 1rem;
+  border-radius: 50%;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.threeD {
+  width: 1rem;
+  display: none;
+  background: rgba(255, 0, 0, 0.685);
+  height: 1rem;
+  border-radius: 50%;
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.fourD {
+  width: 1rem;
+  display: none;
+  background: rgba(255, 0, 0, 0.685);
+  height: 1rem;
+  border-radius: 50%;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.fiveD {
+  width: 1rem;
+  display: none;
+  background: rgba(255, 0, 0, 0.685);
+  height: 1rem;
+  border-radius: 50%;
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.sixD {
+  width: 1rem;
+  display: none;
+  background: rgba(255, 0, 0, 0.685);
+  height: 1rem;
+  border-radius: 50%;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.sevenD {
+  width: 1rem;
+  display: none;
+  background: rgba(255, 0, 0, 0.685);
+  height: 1rem;
+  border-radius: 50%;
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#dice.dice1 .twoD {
+  display: block;
+}
+
+#dice.dice2 .oneD,
+#dice.dice2 .threeD {
+  display: block;
+}
+
+#dice.dice3 .oneD,
+#dice.dice3 .twoD,
+#dice.dice3 .threeD {
+  display: block;
+}
+
+#dice.dice4 .oneD,
+#dice.dice4 .fiveD,
+#dice.dice4 .threeD,
+#dice.dice4 .sixD {
+  display: block;
+}
+
+#dice.dice5 .oneD,
+#dice.dice5 .fiveD,
+#dice.dice5 .threeD,
+#dice.dice5 .sixD,
+#dice.dice5 .twoD {
+  display: block;
+}
+
+#dice.dice6 .oneD,
+#dice.dice6 .sevenD,
+#dice.dice6 .threeD,
+#dice.dice6 .fourD,
+#dice.dice6 .fiveD,
+#dice.dice6 .sixD {
+  display: block;
+}/*# sourceMappingURL=style.css.map */
