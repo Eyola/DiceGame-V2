@@ -1,4 +1,4 @@
-let player = 0;
+let player = 1;
 let tempScore = [0, 0];
 let totalScore = [0, 0];
 
@@ -6,18 +6,21 @@ let players = {
     player0 : {
         nom   : document.querySelector(".one .name"),
         score : document.querySelector(".one .score"),
-        total : document.querySelector(".one .total")
+        total : document.querySelector(".one .total"),
+        section : document.querySelector(".device")
     },
     player1 : {
         nom   : document.querySelector(".two .name"),
         score : document.querySelector(".two .score"),
-        total : document.querySelector(".two .total") 
+        total : document.querySelector(".two .total") ,
+        section : document.querySelector(".device")
     }
 };
-let dice = document.querySelector('.game .dé');
+let dice = document.querySelector(".game .dé");
 let initGameButton = document.querySelectorAll(".disable");
 let resetScoreAll = document.querySelectorAll(".score");
-let resetTotalAll = document.querySelectorAll('.total');
+let resetTotalAll = document.querySelectorAll(".total");
+let diceToggle = document.querySelector("#dice");
 let diceResult = 0;
 
 const newGame = document.querySelector('#new-game'); 
@@ -27,7 +30,8 @@ newGame.addEventListener('click', () => {
     resetAll();
     initGameButton.forEach(element => {
         element.disabled = false;
-    })});
+    })
+});
 
 const play = document.querySelector('#launch');
 play.addEventListener('click', () => {
@@ -57,7 +61,9 @@ saveGame.addEventListener('click', () => {
 
 function roll() {
     diceResult = Math.floor(Math.random() * (7 - 1) + 1);
+    diceToggle.removeAttribute('class');
     dice.innerText = diceResult;
+    diceToggle.classList.add('dice' + diceResult);
     return diceResult;
 }
 
@@ -77,7 +83,10 @@ function addTotalScore() {
 
 function changePlayer() {
     let playerNumber = (player == 0) ? 1 : 0;
+    players['player' + player].section.classList.remove("active" + player);
     player = playerNumber;
+    players['player' + player].section.classList.add("active" + player);
+
 }
 
 function resetGame() {    
